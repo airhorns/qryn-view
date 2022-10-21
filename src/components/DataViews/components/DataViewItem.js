@@ -60,7 +60,7 @@ export function DataViewItem(props) {
     const viewHeight = useViewHeight({ type, actualQuery, total, dataView});
 
 
-    if (actualQuery && actualQuery.sequenceDiagramView) {
+    if (true) {
         console.log(actualQuery)
         const valuesToUse = {
             source: 'source',
@@ -82,7 +82,9 @@ export function DataViewItem(props) {
             valuesToUse,
             ...props,
         };
-        return <SequenceDiagram {...sequenceProps}/>
+        return <div style={{position: 'relative', height: "100%", width: '100%'}}>
+            <SequenceDiagram  {...sequenceProps}/>
+            </div>
     }
     if (actualQuery && type === "matrix" && streamData.length > 0) {
         // return matrix type component
