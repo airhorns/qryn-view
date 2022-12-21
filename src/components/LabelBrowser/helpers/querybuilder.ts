@@ -42,8 +42,9 @@ const parseLog = {
             ?.match(/[^{}]+(?=})/g)
             ?.map((m) => m.split(","))
             ?.flat() || [],
-    addLabel: (op: any, keySubtValue: any, keyValue: any) => 
-        op === "!=" ? keyValue : keySubtValue
+    addLabel: (op: any, keySubtValue: any, keyValue: any) => {
+        return op !== "!=" ? keyValue : keySubtValue
+    }
     ,
     rmValueFromLabel: (label: any, value: any) => {
         const [lb, val] = label?.split("=~");
@@ -65,6 +66,9 @@ const parseLog = {
         const labelmod = `${lb}=~"${values?.trim()}|${value?.trim()}"`;
         return labelmod;
     },
+    editValueInLabel: (label: string, value: string, op: string) => {
+        return `${label}${op}"${value}"`;
+    },
     isEqualsQuery: (query: string, keyValue: any[]) => {
         const [key, value] = keyValue;
         return query === `{${key}="${value}"}`;
@@ -73,7 +77,6 @@ const parseLog = {
         if (parseLog.isEqualsQuery(query, keyValue) && keyValue !== null) {
             return parseLog.equalLabels(keyValue, op, tags);
         }
-
         return parseQuery.fromLabels(query, keyValue, op, tags);
     },
 };
@@ -99,18 +102,38 @@ function parseQueryLabels(keyVal: any[], query: string, op: string) {
         if (!regexQuery) {
             return "";
         }
-
-        if ( value !== null &&
+        console.log(label, key, value)
+        if (value !== null &&
             !label.includes(key?.trim()) &&
             !querySplitted?.some((s) => s.includes(key))
         ) {
             // add new label
-            let labelMod = op === "!=" ? keySubtValue : label;
-            const parsed = parseLog.addLabel(op, labelMod, keyValue);
+            const parsed = parseLog.addLabel(op, keySubtValue, keyValue);
             const regs = parseLog.splitLabels(query).concat(parsed);
             return regs.join(",");
         }
-
+        
+        if ( value !== null &&
+            label?.includes("=") &&
+            label?.startsWith(key?.trim()) &&
+            label?.includes(value)
+        ) {
+            // edit selected values in existing label;
+            let labelMod = parseLog.editValueInLabel(key, value, op);
+            console.log(label)
+            return parseLog
+                .splitLabels(query)
+                ?.join(",")
+                ?.replace(`${label}`, labelMod);
+        }
+        if (value !== null &&
+            label.includes(key?.trim()) && querySplitted?.some((s) => s.includes(key)) && op === '!='
+        ) {
+            // add new label
+            const parsed = parseLog.addLabel(op, keySubtValue, keyValue);
+            const regs = parseLog.splitLabels(query).concat(parsed);
+            return regs.join(",");
+        }
         if ( value !== null &&
             label?.includes("=") &&
             label?.split("=")?.[0]?.trim() === key?.trim() &&
@@ -123,7 +146,6 @@ function parseQueryLabels(keyVal: any[], query: string, op: string) {
                 ?.join(",")
                 ?.replace(`${label}`, labelMod);
         }
-
         if ( value !== null &&
             label?.includes("=~") &&
             label?.split("=~")?.[0]?.trim() === key?.trim() &&
@@ -158,7 +180,7 @@ function parseQueryLabels(keyVal: any[], query: string, op: string) {
             return filtered?.join(",");
         }
     }
-    return "";
+    return queryArr.join(",")
 }
 
 export function decodeQuery(query: any, key: any, value: any, op: any, type: any) {
@@ -179,7 +201,6 @@ export function decodeQuery(query: any, key: any, value: any, op: any, type: any
     if (!isQuery && key !== "__name__") {
         return newQuery(keyValue, op, tags);
     }
-
     return editQuery(query, keyValue, op, tags);
 }
 export function queryBuilder(labels: any, expr: any, hasPipe = false, pipeLabels = []) {
@@ -249,7 +270,6 @@ export function queryBuilderWithLabels(
     // here will return without braces\
     //
     //   return [preTags, "{", selectedLabels.join(","), "}", postTags].join("");
-
     if (name === "left") {
         const leftC = [...left];
         leftC.forEach((query) => {
