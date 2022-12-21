@@ -180,7 +180,7 @@ function parseQueryLabels(keyVal: any[], query: string, op: string) {
             return filtered?.join(",");
         }
     }
-    return queryArr.join(",")
+    return ''
 }
 
 export function decodeQuery(query: any, key: any, value: any, op: any, type: any) {
