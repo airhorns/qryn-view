@@ -1,6 +1,6 @@
 import { environment } from "../environment/env.dev";
 import setDebug from "./setDebug";
-import * as moment from "moment";
+import moment from "moment";
 import { nanoid } from "nanoid";
 
 const BOOLEAN_VALUES = ["isSubmit", "isSplit", "autoTheme", "isEmbed"];

@@ -1,6 +1,6 @@
 import memoize from "memoize-one";
 
-import * as moment from "moment";
+import moment from "moment";
 
 export const TAGS_LEVEL: any = {
     critical: ["emerg", "fatal", "alert", "crit", "critical"],

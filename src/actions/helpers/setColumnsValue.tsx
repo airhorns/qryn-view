@@ -4,7 +4,7 @@
  * @returns Default Time and Value column headers with time formatter
  */
 
-import * as _moment from "moment";
+import moment from "moment";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 import { themes } from "../../theme/themes";
@@ -14,7 +14,7 @@ import { cx, css } from "@emotion/css";
 import { setSplitView } from "../../components/StatusBar/components/SplitViewButton/setSplitView";
 import { setRightPanel } from "../setRightPanel";
 import { ColumnDef } from "@tanstack/react-table";
-const moment: any = _moment;
+
 
 const TraceLink = (theme: any) => css`
     border: none;

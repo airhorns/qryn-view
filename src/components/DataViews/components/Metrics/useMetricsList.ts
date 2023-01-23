@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import { getHeaders } from "./helpers";
-import * as moment from "moment";
+import moment from "moment";
 export function useMetricsList(id: any, value: any) {
 
     

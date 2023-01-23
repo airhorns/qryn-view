@@ -10,7 +10,7 @@ import "react-flot/flot-override/jquery.flot.resize";
 import { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 //Packages
-import * as moment from "moment";
+import moment from "moment";
 import { format } from "date-fns";
 //import   ReactFlot from "react-flot/temp";
 
