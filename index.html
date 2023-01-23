@@ -17,5 +17,11 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div style="height:100%" id="root"></div>
+
+    <script type="module" src="/src/index.tsx"></script>
+    <script>
+      window.global = window;
+      var exports = {};
+    </script>
   </body>
 </html>

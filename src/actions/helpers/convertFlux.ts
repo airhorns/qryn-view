@@ -1,6 +1,7 @@
-import Papa from "papaparse";
+import { usePapaParse } from "react-papaparse";
 
 export async function convertFlux(csv: any) {
+    const {readString} = usePapaParse()
     try {
         var response: any = {
             meta: [],
@@ -8,7 +9,7 @@ export async function convertFlux(csv: any) {
             statistics: { elapsed: 0.360986682, rows_read: 0, bytes_read: 0 },
         };
 
-        var json: any = Papa.parse(csv, {
+        var json: any = readString(csv, {
             header: true,
             comments: true,
             dynamicTyping: true,

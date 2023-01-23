@@ -12,8 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { css } from "@emotion/css";
-import cx from "classnames";
+import { css, cx } from "@emotion/css";
 import { get as _get, maxBy as _maxBy, values as _values } from "lodash";
 import * as React from "react";
 import MdKeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
