@@ -33,6 +33,6 @@ describe('Main Component', () => {
     it('render MobileView component when window is small size', () => {
         windowResize(900)
         const wrapper = shallow(rwrapper(<Main  />));
-        expect(wrapper.containsMatchingElement(<MobileView isEmbed={false} isSplit={false} theme={themes['light']} settingsDialogOpen={false} />)).toEqual(false);
+        expect(wrapper.containsMatchingElement(<MobileView isEmbed={false} theme={themes['light']} settingsDialogOpen={false} />)).toEqual(false);
     })
 });
