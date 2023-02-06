@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Value List Component renders correctly 1`] = `
+<ValuesSelector
+  data={
+    Object {
+      "browserOpen": true,
+      "chartView": false,
+      "dataSourceId": "cHI2SqPzH_kxYRXj",
+      "dataSourceType": "logs",
+      "dataSourceURL": "https://view-oss-demo.qryn.dev",
+      "expr": "",
+      "id": "uLm84kZcbJXfDSEoU0NBp",
+      "idRef": "L-A",
+      "isShowTs": true,
+      "labels": Array [
+        Object {
+          "name": "code",
+          "selected": true,
+          "values": Array [
+            Object {
+              "id": "I8JWIMUkRRq5jvDfE4r0l",
+              "inverted": false,
+              "label": "code",
+              "name": "503",
+              "selected": true,
+              "type": "value",
+            },
+            Object {
+              "id": "yszV3wcnGo-RHEMOXE5VI",
+              "inverted": false,
+              "label": "code",
+              "name": "500",
+              "selected": true,
+              "type": "value",
+            },
+          ],
+        },
+      ],
+      "lastIdx": 1,
+      "limit": 100,
+      "loading": false,
+      "panel": "left",
+      "queryType": "range",
+      "response": Object {},
+      "step": 5,
+      "tableView": false,
+      "values": Array [],
+    }
+  }
+  name="left"
+  queries={
+    Array [
+      Object {
+        "browserOpen": true,
+        "chartView": false,
+        "dataSourceId": "cHI2SqPzH_kxYRXj",
+        "dataSourceType": "logs",
+        "dataSourceURL": "https://view-oss-demo.qryn.dev",
+        "expr": "",
+        "id": "uLm84kZcbJXfDSEoU0NBp",
+        "idRef": "L-A",
+        "isShowTs": true,
+        "labels": Array [
+          Object {
+            "name": "code",
+            "selected": true,
+            "values": Array [
+              Object {
+                "id": "I8JWIMUkRRq5jvDfE4r0l",
+                "inverted": false,
+                "label": "code",
+                "name": "503",
+                "selected": true,
+                "type": "value",
+              },
+              Object {
+                "id": "yszV3wcnGo-RHEMOXE5VI",
+                "inverted": false,
+                "label": "code",
+                "name": "500",
+                "selected": true,
+                "type": "value",
+              },
+            ],
+          },
+        ],
+        "lastIdx": 1,
+        "limit": 100,
+        "loading": false,
+        "panel": "left",
+        "queryType": "range",
+        "response": Object {},
+        "step": 5,
+        "tableView": false,
+        "values": Array [],
+      },
+    ]
+  }
+  width={1256}
+/>
+`;
