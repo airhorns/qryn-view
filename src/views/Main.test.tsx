@@ -1,13 +1,14 @@
 import '../../mocks/matchmedia.mock.ts';
 import '@testing-library/jest-dom'
 import {cleanup} from '@testing-library/react';
-import Main, { MobileView } from './Main';
+import Main from './Main';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import Enzyme, {shallow, mount} from 'enzyme';
-import { DesktopView } from './Main';
 import { themes } from '../theme/themes';
 import { Provider } from 'react-redux'
 import store from '../store/store';
+import { MobileView } from './Main/MobileView';
+import { DesktopView } from './Main/DesktopView';
 
 const ReduxProvider = ({ children, reduxStore }: any) => (
   <Provider store={reduxStore}>{children}</Provider>
@@ -27,8 +28,6 @@ describe('Main Component', () => {
   );
     it('renders DesktopView component when window is normal size', () => {
       const wrapper = mount(rwrapper(<Main  />));
-      // eslint-disable-next-line
-      console.log(wrapper.debug());
       expect(wrapper.containsMatchingElement(<DesktopView isEmbed={false} isSplit={false} theme={themes['light']} settingsDialogOpen={false} />)).toEqual(false);
     });
     it('render MobileView component when window is small size', () => {
